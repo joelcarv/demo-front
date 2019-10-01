@@ -9,9 +9,8 @@ Package it
 ```console
 $ git clone https://github.com/joelcarv/demo-front.git
 ```
-```console
+
 Build a docker image from the available Dockerfile
-```
 ```console
 docker build -t angular-demo-front .
 ```
