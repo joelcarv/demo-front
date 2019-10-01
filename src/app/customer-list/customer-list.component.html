@@ -1,0 +1,95 @@
+<!--
+<div class="container custom-container-2">
+    <div *ngIf="Customer.length !== 0">
+      <h3 class="mb-3 text-center">Customer List</h3>
+  
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Customer Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">State</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Country</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of Customer">
+              <td>{{customer.id}}</td>
+              <td>{{customer.name}}</td>
+              <td>{{customer.state}}</td>
+              <td>{{customer.phone}}</td>
+              <td>{{customer.country}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>-->
+
+<!--input aria-label="state" (change)="stateChanged"-->
+<div class="sandbox">
+  <!--select formControlName="profile">
+    <option [ngValue]="null" disabled>Choose Country</option>
+  </select-->
+  <!-- Form starts -->
+  <!--form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+      <select class="custom-select">
+        <option value="" disabled>Choose your city</option>
+        <option>New York</option>
+      </select>
+  
+      <button type="submit">Submit</button>
+  </form-->
+  <!--select class="custom-select" (change)="changeCity($event)" formControlName="cityName">
+      <option value="" disabled>Choose your city</option>
+      <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
+   </select-->
+  <!-- Form ends -->
+</div>
+<div class="customer-list mat-elevation-z8">
+<mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Customer name</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{customer.name}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <mat-header-cell *matHeaderCellDef>
+          <div>
+            <form class="tp-form">
+                <mat-form-field>
+                    <input matInput [(ngModel)]="model.selectedCountry" [formControl]="countryFilter" (change)="onCountrySelection()" placeholder="Country">
+                </mat-form-field>
+              </form>
+            <!--input aria-label="country" (change)="countryChanged"-->
+          </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{customer.country}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef>
+            <mat-form-field>
+                <mat-select placeholder= "State"
+                  [(ngModel)] = "model.selectedState" name = "state" (ngModelChange)="onStateSelection()">
+                  <mat-option *ngFor = "let state of states" [value] = "state">
+                    {{state}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{customer.state}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef>Phone number</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{customer.phone}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="countryCode">
+        <mat-header-cell *matHeaderCellDef>Country Code</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{customer.countryCode}}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>
