@@ -4,6 +4,9 @@ It is a simple frontend project that accesses [demo-back](https://github.com/joe
 Currently it only displays customer phone information and you are able to search by number validity/state and country. 
 
 # How to use this project
+On windows I recommend using Power Shell to avoid having issues with the following commands
+
+Just follow these 3 simple steps
 
 Package it
 ```console
@@ -12,11 +15,11 @@ $ git clone https://github.com/joelcarv/demo-front.git
 
 Build a docker image from the available Dockerfile
 ```console
-docker build -t angular-demo-front .
+$ docker build -t angular-demo-front .
 ```
 Then finally run the it, the frontend will be accessible from localhost:4200
 ```console
-docker run -v ${PWD}:/app -v /app/node_modules -p 4200 angular-demo-front
+$ docker run -v ${PWD}:/app -v /app/node_modules -p 4200 angular-demo-front
 ```
 Take note that this frontend will try to access demo-back statically at localhost:8080 it is not configurable (I was too sleepy to correct this)
 
